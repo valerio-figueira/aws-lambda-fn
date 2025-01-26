@@ -1,0 +1,35 @@
+{
+  "name": "aws-lambda-fn",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "aws-lambda": "^1.0.7",
+    "class-validator": "^0.14.1",
+    "es6-shim": "^0.35.8",
+    "tsyringe": "^4.8.0",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/aws-lambda": "^8.10.147",
+    "@types/node": "^22.10.10",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "prettier": "3.4.2",
+    "prisma": "^6.2.1",
+    "quicktype": "^23.0.171",
+    "serverless-offline": "^14.4.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.21.0"
+  }
+}
