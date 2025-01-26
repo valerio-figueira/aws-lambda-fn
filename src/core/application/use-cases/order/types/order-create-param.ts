@@ -1,4 +1,4 @@
-import { OrderStatusEnum } from "../../../enums/order-status.enum";
+import { OrderStatusEnum } from "../../../../domain/order/enums/order-status.enum";
 import { OrderItemType } from "./order-item.type";
 
 export class OrderCreateParam {

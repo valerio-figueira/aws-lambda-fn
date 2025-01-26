@@ -5,7 +5,7 @@ import {
   IsNumber,
   IsString,
 } from "class-validator";
-import { OrderStatusEnum } from "../../../core/domain/order/enums/order-status.enum";
+import { OrderStatusEnum } from "../../../domain/order/enums/order-status.enum";
 import { OrderItemCreateAdapterIn } from "./order-item-create.adapter.in";
 
 export class OrderCreateAdapterIn {
