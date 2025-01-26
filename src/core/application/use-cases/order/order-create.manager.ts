@@ -27,19 +27,19 @@ export class OrderCreateManager implements OrderCreateManagerContract {
       const order = new Order(null, userId, status, totalAmount);
       const orderMapped = OrderMapper.toOrderType(order);
 
-      const { id } = await tx.order.create(orderMapped);
+      const { id: orderId } = await tx.order.create(orderMapped);
 
       const orderItems: OrderItemType[] = [];
 
       for (const { price, quantity } of items) {
-        const item = new OrderItem(null, id, price, quantity);
+        const item = new OrderItem(null, orderId, price, quantity);
         const itemMapped = OrderItemMapper.toOrderItemType(item);
         orderItems.push(itemMapped);
       }
 
       await tx.orderItem.createMany(orderItems);
 
-      return id;
+      return orderId;
     });
 
     return { id };
