@@ -36,6 +36,7 @@ export const handler: Handler = async (event: SQSEvent) => {
       body: JSON.stringify({ orderId, message: "Order created successfully!" }),
     };
   } catch (error) {
+    // TO-DO: classes of errors
     return {
       statusCode: 500,
       body: JSON.stringify({
