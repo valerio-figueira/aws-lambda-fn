@@ -32,7 +32,7 @@ export const handler: Handler = async (event: SQSEvent) => {
     const { id: orderId } = await orderManager.create(order);
 
     return {
-      statusCode: 200,
+      statusCode: 201,
       body: JSON.stringify({ orderId, message: "Order created successfully!" }),
     };
   } catch (error) {
