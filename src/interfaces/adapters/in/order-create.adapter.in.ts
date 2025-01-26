@@ -24,4 +24,16 @@ export class OrderCreateAdapterIn {
   @IsArray({ each: true })
   @IsNotEmpty()
   items: OrderItemCreateAdapterIn[];
+
+  constructor(
+    userId: string,
+    status: OrderStatusEnum,
+    totalAmount: number,
+    items: OrderItemCreateAdapterIn[],
+  ) {
+    this.userId = userId;
+    this.status = status;
+    this.totalAmount = totalAmount;
+    this.items = items;
+  }
 }

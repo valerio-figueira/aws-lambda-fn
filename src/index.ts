@@ -5,6 +5,7 @@ import { UserRepositoryContract } from "./core/application/use-cases/user/contra
 import { PrismaTransaction } from "./infra/prisma/transactions/transactions.prisma";
 import { UserRepository } from "./infra/prisma/user.repository";
 import { OrderCreateManager } from "./core/application/use-cases/order/order-create.manager";
+import { OrderCreateAdapterIn } from "./interfaces/adapters/in/order-create.adapter.in";
 
 container.register<TransactionContract>("TransactionContract", {
   useClass: PrismaTransaction,
@@ -15,10 +16,20 @@ container.register<UserRepositoryContract>("UserRepositoryContract", {
 
 export const handler: Handler = async (event: SQSEvent) => {
   try {
-    const [message] = event.Records;
+    const [sqsMessage] = event.Records;
+
     const orderManager = container.resolve(OrderCreateManager);
-    const body = JSON.parse(message.body || "{}");
-    const { id: orderId } = await orderManager.create(body);
+
+    const body: OrderCreateAdapterIn = JSON.parse(sqsMessage.body || "{}");
+
+    const order = new OrderCreateAdapterIn(
+      body.userId,
+      body.status,
+      body.totalAmount,
+      body.items,
+    );
+
+    const { id: orderId } = await orderManager.create(order);
 
     return {
       statusCode: 200,
